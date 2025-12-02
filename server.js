@@ -27,7 +27,7 @@ app.post('/api/split-pdf', async (req, res) => {
 
     // Convert base64 to buffer
     const pdfBuffer = Buffer.from(pdf, 'base64');
-    const pdfDoc = await PDFDocument.load(pdfBuffer);
+    const pdfDoc = await PDFDocument.load(pdfBuffer, { ignoreEncryption: true });
     const pageCount = pdfDoc.getPageCount();
 
     // If page number specified, return single page
